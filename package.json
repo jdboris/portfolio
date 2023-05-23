@@ -4,6 +4,7 @@
   "description": "My personal portfolio website.",
   "main": "dist/index.html",
   "scripts": {
+    "start": "npx webpack serve",
     "build": "npx webpack"
   },
   "repository": {
@@ -19,10 +20,12 @@
   "devDependencies": {
     "css-loader": "^6.7.4",
     "html-webpack-plugin": "^5.5.1",
+    "nodemon": "^2.0.22",
     "sass": "^1.62.1",
     "sass-loader": "^13.3.0",
     "style-loader": "^3.3.3",
     "webpack": "^5.83.1",
-    "webpack-cli": "^5.1.1"
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   }
 }
