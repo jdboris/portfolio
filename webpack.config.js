@@ -6,7 +6,9 @@ module.exports = {
   mode: "development",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "/dist"),
+    // Source: https://stackoverflow.com/a/50179280
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -26,5 +28,9 @@ module.exports = {
     port: 8080,
     open: true,
     hot: true,
+    // Source: https://stackoverflow.com/a/50179280
+    historyApiFallback: {
+      index: "/",
+    },
   },
 };
