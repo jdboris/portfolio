@@ -15,15 +15,28 @@
       <aside>
         <header>EXPLORER: PORTFOLIO</header>
         <nav>
-          <a href="/"><i class="fa-solid fa-house"></i> home</a>
+          <a href="/home"><i class="fa-solid fa-house"></i> home</a>
           <a href="/work">work</a>
         </nav>
       </aside>
-      <spa-route path="/">
-        <h1>Home</h1>
+      <spa-route path="/">Welcome</spa-route>
+      <spa-route path="/home">
+        <header>
+          <i class="fa-solid fa-house"></i> home
+          <a href="/"><i class="fa-solid fa-xmark"></i></a>
+        </header>
+        <main>
+          <h1>Home</h1>
+        </main>
       </spa-route>
       <spa-route path="/work">
-        <h1>Work</h1>
+        <header>
+          work
+          <a href="/"><i class="fa-solid fa-xmark"></i></a>
+        </header>
+        <main>
+          <h1>Work</h1>
+        </main>
       </spa-route>
     </main>
     <footer></footer>
