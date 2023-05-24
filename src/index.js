@@ -1,3 +1,2 @@
 import "./style.scss";
-
-console.log("hello world");
+import "spa-routing";
