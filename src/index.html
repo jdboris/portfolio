@@ -12,19 +12,24 @@
   <body>
     <header></header>
     <main>
-      <aside>
-        <header>EXPLORER: PORTFOLIO</header>
-        <nav>
-          <a href="/home"><i class="fa-solid fa-house"></i> home</a>
-          <details>
-            <summary>work</summary>
+      <nav>
+        <details open>
+          <summary><i class="codicon codicon-files"></i></summary>
+          <aside>
+            <header>EXPLORER: PORTFOLIO</header>
             <nav>
-              <a href="/project-1">project-1</a>
-              <a href="/project-2">project-2</a>
+              <a href="/home"><i class="fa-solid fa-house"></i> home</a>
+              <details>
+                <summary>work</summary>
+                <nav>
+                  <a href="/project-1">project-1</a>
+                  <a href="/project-2">project-2</a>
+                </nav>
+              </details>
             </nav>
-          </details>
-        </nav>
-      </aside>
+          </aside>
+        </details>
+      </nav>
       <spa-route path="/">
         <main>
           Joe Boris
