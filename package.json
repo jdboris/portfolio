@@ -4,8 +4,8 @@
   "description": "My personal portfolio website.",
   "main": "dist/index.html",
   "scripts": {
-    "start": "npx webpack serve",
-    "build": "npx webpack"
+    "start": "npx webpack serve --env NODE_ENV=development",
+    "build": "npx webpack --env NODE_ENV=production"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@jdboris/css-themes": "file:../@jdboris/css-themes",
     "css-loader": "^6.7.4",
+    "dotenv": "^16.0.3",
     "html-webpack-plugin": "^5.5.1",
     "nodemon": "^2.0.22",
     "sass": "^1.62.1",
