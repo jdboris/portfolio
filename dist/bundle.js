@@ -166,7 +166,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _jdboris_css_themes_vs_code__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @jdboris/css-themes/vs-code */ \"../@jdboris/css-themes/vs-code/index.js\");\n/* harmony import */ var spa_routing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! spa-routing */ \"../spa-routing/index.js\");\n/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ \"./src/style.scss\");\n\r\n// import \"@vscode/codicons/dist/codicon.css\";\r\n\r\n\r\n\n\n//# sourceURL=webpack://portfolio/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _jdboris_css_themes_vs_code__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @jdboris/css-themes/vs-code */ \"../@jdboris/css-themes/vs-code/index.js\");\n/* harmony import */ var spa_routing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! spa-routing */ \"../spa-routing/index.js\");\n/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ \"./src/style.scss\");\n\r\n// import \"@vscode/codicons/dist/codicon.css\";\r\n\r\n\r\n\r\nif (window.location.host == \"jdboris.github.io\") {\r\n  (0,spa_routing__WEBPACK_IMPORTED_MODULE_1__.setRoot)(\"/portfolio/dist\");\r\n}\r\n\n\n//# sourceURL=webpack://portfolio/./src/index.js?");
 
 /***/ }),
 
