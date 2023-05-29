@@ -18,19 +18,20 @@
   },
   "homepage": "https://github.com/jdboris/portfolio#readme",
   "devDependencies": {
-    "css-loader": "^6.7.4",
-    "dotenv": "^16.0.3",
-    "html-webpack-plugin": "^5.5.1",
-    "nodemon": "^2.0.22",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.3.0",
-    "style-loader": "^3.3.3",
-    "webpack": "^5.83.1",
-    "webpack-cli": "^5.1.1",
+    "@jdboris/css-themes": "file:../@jdboris/css-themes",
+    "spa-routing": "file:../spa-routing",
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
     "@jdboris/css-themes": "^2.0.0",
-    "spa-routing": "^1.0.1"
+    "spa-routing": "^1.0.1",
+    "css-loader": "^6.7.4",
+    "dotenv": "^16.0.3",
+    "html-webpack-plugin": "^5.5.1",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.3.0",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
   }
 }
