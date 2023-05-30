@@ -19,16 +19,19 @@
   },
   "homepage": "https://github.com/jdboris/portfolio#readme",
   "devDependencies": {
-    "webpack-dev-server": "^4.15.0",
-    "@jdboris/css-themes": "^2.0.0",
     "css-loader": "^6.7.4",
     "dotenv": "^16.0.3",
     "html-webpack-plugin": "^5.5.1",
     "sass": "^1.62.1",
     "sass-loader": "^13.3.0",
-    "spa-routing": "^1.0.1",
     "style-loader": "^3.3.3",
     "webpack": "^5.83.1",
-    "webpack-cli": "^5.1.1"
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "spa-routing": "^1.0.1",
+    "@jdboris/css-themes": "^2.0.0"
   }
 }
