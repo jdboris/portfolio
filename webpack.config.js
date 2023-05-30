@@ -11,11 +11,9 @@ module.exports = ({ NODE_ENV }) => {
     entry: "./src/index.js",
     mode: NODE_ENV,
     output: {
-      // NOTE: Remove the '/' from the beginning
-      filename: `${(process.env.APP_PATH || "").substring(1)}bundle.js`,
+      filename: `bundle.js`,
       path: path.resolve(__dirname, "./dist"),
-      // Source: https://stackoverflow.com/a/50179280
-      publicPath: "/",
+      publicPath: `/`,
     },
     module: {
       rules: [
@@ -31,6 +29,8 @@ module.exports = ({ NODE_ENV }) => {
       }),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
+        // NOTE: Remove the '/' from the end (if any)
+        publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
       }),
     ],
     devServer: {
