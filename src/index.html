@@ -14,7 +14,6 @@
           <aside>
             <header>EXPLORER: PORTFOLIO</header>
             <nav>
-              <a href="/home"><i class="fa-solid fa-house"></i> home</a>
               <details>
                 <summary>work</summary>
                 <nav>
@@ -24,6 +23,9 @@
               </details>
               <a href="/resume">
                 <i class="fa-regular fa-file-pdf"></i> resume
+              </a>
+              <a href="/contact">
+                <i class="fa-regular fa-envelope"></i> contact
               </a>
             </nav>
           </aside>
@@ -38,15 +40,6 @@
             <a class="button" href="/resume">Resume</a>
             <a class="button" href="/contact">Contact Me</a>
           </nav>
-        </main>
-      </spa-route>
-      <spa-route path="/home">
-        <header>
-          <i class="fa-solid fa-house"></i> home
-          <a href="/"><i class="fa-solid fa-xmark"></i></a>
-        </header>
-        <main>
-          <h1>Home</h1>
         </main>
       </spa-route>
       <spa-route path="/work">
@@ -65,6 +58,15 @@
         </header>
         <main>
           <iframe src="https://jdboris.github.io/resume/"></iframe>
+        </main>
+      </spa-route>
+      <spa-route path="/contact">
+        <header>
+          <i class="fa-regular fa-envelope"></i> contact
+          <a href="/"><i class="fa-solid fa-xmark"></i></a>
+        </header>
+        <main>
+          <h1>Contact Me</h1>
         </main>
       </spa-route>
     </main>
