@@ -11,9 +11,10 @@ module.exports = ({ NODE_ENV }) => {
     entry: "./src/index.js",
     mode: NODE_ENV,
     output: {
-      filename: `bundle.js`,
+      filename: `[contenthash].bundle.js`,
       path: path.resolve(__dirname, "./dist"),
       publicPath: `/`,
+      clean: true,
     },
     module: {
       rules: [
