@@ -1,47 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
-spa-route:not([active]) {
-  display: none;
-}
+body {
+  spa-route:not([active]) {
+    display: none;
+  }
 
-// WELCOME PAGE
-spa-route[path="/"] {
-  font-family: "Finlandica", sans-serif;
-  font-weight: bold;
-
-  > main {
-    display: flex;
-    flex-direction: column;
-    font-size: min(8rem, 13vw);
-    justify-content: center;
-    gap: 0.2rem;
-    line-height: 1.1;
-
-    > small {
-      font-size: min(2.9rem, 4.6vw);
-    }
-
-    > nav {
+  // WELCOME PAGE
+  spa-route[path="/"] {
+    > main {
+      font-family: "Finlandica", sans-serif;
+      font-weight: bold;
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 0rem;
+      flex-direction: column;
+      font-size: min(8rem, 13vw);
+      justify-content: center;
+      gap: 0.2rem;
+      line-height: 1.1;
 
-      margin-top: 2rem;
+      > small {
+        font-size: min(2.9rem, 4.6vw);
+      }
+
+      > nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0rem;
+
+        margin-top: 2rem;
+      }
     }
   }
-}
 
-spa-route[path="/resume"] {
-  > main {
-    @media screen and (max-width: 480px) {
-      padding: 0;
+  spa-route[path="/resume"] {
+    > main {
+      @media screen and (max-width: 480px) {
+        padding: 0;
+      }
     }
-  }
 
-  iframe {
-    border: none;
-    max-width: 866px;
-    flex-grow: 1;
+    iframe {
+      border: none;
+      max-width: 866px;
+      flex-grow: 1;
+    }
   }
 }
