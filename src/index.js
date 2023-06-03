@@ -23,3 +23,13 @@ new ResizeObserver((entries) => {
     width = entry.contentRect.width;
   });
 }).observe(document.body);
+
+window.addEventListener("popstate", () => {
+  sideNav
+    .querySelectorAll(`a:not([href="${location.pathname}"])`)
+    .forEach((x) => x.classList.remove("active"));
+
+  sideNav
+    .querySelectorAll(`a[href="${location.pathname}"]`)
+    .forEach((x) => x.classList.add("active"));
+});
