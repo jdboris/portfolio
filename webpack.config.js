@@ -20,7 +20,21 @@ module.exports = ({ NODE_ENV }) => {
       rules: [
         {
           test: /\.(sa|sc|c)ss$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: [
+            "style-loader",
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
         },
       ],
     },
