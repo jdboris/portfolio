@@ -6,18 +6,20 @@ import "./style.scss";
 setRoot(process.env.APP_PATH || "/");
 
 const NAV_SIZE_BREAKPOINT = 645;
-let previousWidth = null;
+let width = document.documentElement.clientWidth;
+
+const sideNav = document.querySelector("body > main > nav");
 
 new ResizeObserver((entries) => {
   entries.forEach((entry) => {
     if (
       entry.contentRect.width <= NAV_SIZE_BREAKPOINT &&
-      (previousWidth > NAV_SIZE_BREAKPOINT || previousWidth === null)
+      (width > NAV_SIZE_BREAKPOINT || width === null)
     ) {
-      document
-        .querySelectorAll("body > main > nav > details[open]")
+      sideNav
+        .querySelectorAll(":scope > details[open]")
         .forEach((x) => (x.open = false));
     }
-    previousWidth = entry.contentRect.width;
+    width = entry.contentRect.width;
   });
 }).observe(document.body);
