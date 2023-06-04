@@ -32,6 +32,12 @@ body {
     }
   }
 
+  spa-route[path="/hololounge"] {
+    .hero {
+      background-image: url("./img/hololounge-screenshot-1.png");
+    }
+  }
+
   spa-route[path="/resume"] {
     > main {
       @media screen and (max-width: 480px) {
