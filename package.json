@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx webpack serve --env NODE_ENV=development",
     "build": "npx webpack --env NODE_ENV=production",
-    "setup:dev": "npm link ../spa-routing && npm link ../@jdboris/css-themes"
+    "link": "npm link ../spa-routing && npm link ../@jdboris/css-themes"
   },
   "repository": {
     "type": "git",
