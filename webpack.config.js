@@ -36,10 +36,15 @@ module.exports = ({ NODE_ENV }) => {
             },
           ],
         },
-        {
-          test: /\.html$/,
-          loader: "html-loader",
-        },
+
+        ...(NODE_ENV == "production"
+          ? [
+              {
+                test: /\.html$/,
+                loader: "html-loader",
+              },
+            ]
+          : []),
       ],
     },
     plugins: [
