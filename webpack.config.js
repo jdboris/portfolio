@@ -36,6 +36,10 @@ module.exports = ({ NODE_ENV }) => {
             },
           ],
         },
+        {
+          test: /\.html$/,
+          loader: "html-loader",
+        },
       ],
     },
     plugins: [
