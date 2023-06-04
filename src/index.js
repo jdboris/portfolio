@@ -6,7 +6,7 @@ import "./style.scss";
 setRoot(process.env.APP_PATH || "/");
 
 const NAV_SIZE_BREAKPOINT = 645;
-let width = document.documentElement.clientWidth;
+let width = null;
 
 const sideNav = document.querySelector("body > main > nav");
 
