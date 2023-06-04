@@ -42,5 +42,12 @@ window.addEventListener("popstate", () => {
     ) {
       folder.open = true;
     }
+
+    // Close on navigate if on small screen
+    if (width <= NAV_SIZE_BREAKPOINT) {
+      sideNav
+        .querySelectorAll(":scope > details[open]")
+        .forEach((x) => (x.open = false));
+    }
   });
 });
