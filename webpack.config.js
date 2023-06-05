@@ -55,6 +55,13 @@ module.exports = ({ NODE_ENV }) => {
         template: "./src/index.html",
         // NOTE: Remove the '/' from the end (if any)
         publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
+        filename: "index.html",
+      }),
+      new HtmlWebpackPlugin({
+        template: "./src/index.html",
+        // NOTE: Remove the '/' from the end (if any)
+        publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
+        filename: "404.html",
       }),
     ],
     devServer: {
