@@ -16,6 +16,7 @@ module.exports = ({ NODE_ENV }) => {
       publicPath: `/`,
       clean: true,
     },
+
     module: {
       rules: [
         {
@@ -46,6 +47,9 @@ module.exports = ({ NODE_ENV }) => {
             ]
           : []),
       ],
+    },
+    resolve: {
+      roots: [path.resolve(__dirname, "./src")],
     },
     plugins: [
       new webpack.DefinePlugin({
