@@ -50,4 +50,10 @@ window.addEventListener("popstate", () => {
         .forEach((x) => (x.open = false));
     }
   });
+
+  if (location.pathname.startsWith("/work")) {
+    document
+      .querySelectorAll("spa-route[path='/work']")
+      .forEach((x) => (x.active = true));
+  }
 });
