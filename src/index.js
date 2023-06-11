@@ -6,6 +6,7 @@ import "./style.scss";
 setRoot(process.env.APP_PATH || "/");
 
 const NAV_SIZE_BREAKPOINT = 645;
+const SPLIT_MODE_BREAKPOINT = 900;
 let width = null;
 
 const sideNav = document.querySelector("body > main > nav");
@@ -21,6 +22,30 @@ new ResizeObserver((entries) => {
         .querySelectorAll(":scope > details[open]")
         .forEach((x) => (x.open = false));
     }
+
+    if (
+      entry.contentRect.width <= SPLIT_MODE_BREAKPOINT &&
+      (width > SPLIT_MODE_BREAKPOINT || width === null)
+    ) {
+      // Hide all routes that start with /work except for the last one
+      const routes = [
+        ...document.querySelectorAll("spa-route[path^='/work'][active]"),
+      ];
+      routes.pop();
+      routes.forEach((x) => (x.active = false));
+    }
+
+    if (
+      entry.contentRect.width > SPLIT_MODE_BREAKPOINT &&
+      (width <= SPLIT_MODE_BREAKPOINT || width === null)
+    ) {
+      if (document.querySelector("spa-route[path^='/work'][active]")) {
+        document
+          .querySelectorAll("spa-route[path='/work']")
+          .forEach((x) => (x.active = true));
+      }
+    }
+
     width = entry.contentRect.width;
   });
 }).observe(document.body);
@@ -51,9 +76,11 @@ window.addEventListener("popstate", () => {
     }
   });
 
-  if (location.pathname.startsWith("/work")) {
-    document
-      .querySelectorAll("spa-route[path='/work']")
-      .forEach((x) => (x.active = true));
+  if (width > SPLIT_MODE_BREAKPOINT) {
+    if (location.pathname.startsWith("/work")) {
+      document
+        .querySelectorAll("spa-route[path='/work']")
+        .forEach((x) => (x.active = true));
+    }
   }
 });
