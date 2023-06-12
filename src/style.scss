@@ -45,6 +45,13 @@ body {
 
         h2 {
           margin-bottom: 0;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          h2 {
+            text-decoration: none;
+          }
         }
 
         img {
