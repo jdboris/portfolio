@@ -8,10 +8,14 @@ module.exports = ({ NODE_ENV }) => {
   });
 
   return {
-    entry: "./src/index.js",
+    entry: {
+      "preload-overlay": "./src/preload-overlay.js",
+      main: "./src/index.js",
+    },
+
     mode: NODE_ENV,
     output: {
-      filename: `[contenthash].bundle.js`,
+      filename: `[name].[contenthash].js`,
       path: path.resolve(__dirname, "./dist"),
       publicPath: `/`,
       clean: true,
@@ -68,6 +72,7 @@ module.exports = ({ NODE_ENV }) => {
         filename: "404.html",
       }),
     ],
+
     devServer: {
       static: path.resolve(__dirname, "src"),
       port: 8080,

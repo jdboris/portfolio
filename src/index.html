@@ -5,8 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joe Boris | Full-Stack Web Developer</title>
+    <style>
+      preload-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #1e1e1e;
+        z-index: 9999;
+      }
+
+      preload-overlay div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+
+      preload-overlay div::before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        border: 1px solid;
+        border-radius: 50%;
+        padding: 25px;
+        border-color: gray;
+        border-top-color: inherit;
+        width: 150px;
+        height: 150px;
+        animation: rotating 2s linear infinite;
+      }
+
+      preload-overlay img {
+        position: absolute;
+        display: inline-block;
+        width: 100px;
+      }
+
+      @keyframes rotating {
+        from {
+          rotate: 0deg;
+        }
+        to {
+          rotate: 360deg;
+        }
+      }
+
+      @keyframes fade-out {
+        80% {
+          opacity: 0;
+        }
+
+        100% {
+          scale: 2;
+          opacity: 0;
+        }
+      }
+
+      preload-overlay.hidden {
+        animation: fade-out 1s forwards;
+        pointer-events: none;
+      }
+
+      preload-overlay.hidden div,
+      preload-overlay.hidden div::before {
+        animation: fade-out 0.6s forwards;
+      }
+    </style>
   </head>
   <body>
+    <preload-overlay>
+      <div>
+        <img src="/img/vs-code-icon.svg" />
+      </div>
+    </preload-overlay>
     <header></header>
     <main>
       <nav>
