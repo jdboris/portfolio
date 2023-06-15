@@ -224,9 +224,10 @@
                         }}
                       >
                         <span>
-                          ${match.input.substring(match.index - 5, match.index)}
-                          <mark>${match[0]}</mark>
                           ${match.input.substring(
+                            match.index - 5,
+                            match.index
+                          )}<mark>${match[0]}</mark>${match.input.substring(
                             match.index + match[0].length,
                             match.index + match[0].length + 30
                           )}
