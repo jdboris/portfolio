@@ -2,7 +2,9 @@ import "@jdboris/css-themes/vs-code";
 import { setRoot } from "spa-routing";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./style.scss";
-import { search } from "./search.js";
+import debounce from "./debounce.js";
+import { search, selectMatch } from "./search.js";
+import html from "https://cdn.jsdelivr.net/gh/jdboris/htmljs@latest/html.js";
 
 setRoot(process.env.APP_PATH || "/");
 
@@ -98,3 +100,81 @@ window.addEventListener("popstate", () => {
     }
   }
 });
+
+// SEARCH TAB
+{
+  const form = document.querySelector("#search-form");
+  const textbox = form.querySelector("[type='search']");
+  textbox.addEventListener("input", (e) => form.requestSubmit());
+
+  document.querySelector("#search-tab").addEventListener("toggle", (e) => {
+    if (e.currentTarget.open) {
+      textbox.focus();
+    }
+  });
+
+  let id = null;
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    id = debounce(id, () => {
+      const searchResultsSection = document.querySelector(
+        "#search-results-section"
+      );
+      const matches = search(textbox.value);
+      const matchesByRoute = matches.reduce((total, match) => {
+        const route = match.node.parentElement.closest(
+          `spa-route:not([path="/"])`
+        );
+        // Ignore search results that aren't in a route.
+        if (!route) return total;
+
+        return {
+          ...total,
+          [route.path]: [...(total[route.path] || []), match],
+        };
+      }, {});
+
+      searchResultsSection.innerHTML = "";
+
+      // Render a list of <details> containing <navs> with links to show the search results.
+      searchResultsSection.append(
+        ...Object.entries(matchesByRoute).map(([path, matches]) => {
+          return SearchResult(path, matches);
+        })
+      );
+    });
+  };
+
+  function SearchResult(path, matches) {
+    const file = path.split("/").at(-1);
+    return html`
+      <details open>
+        <summary>${file}</summary>
+        <nav>
+          ${matches.map(
+            (match) => html`
+              <a
+                ${{
+                  href: path,
+                  onclick(e) {
+                    selectMatch(match);
+                  },
+                }}
+              >
+                <span>
+                  ${match.input.substring(
+                    match.index - 5,
+                    match.index
+                  )}<mark>${match[0]}</mark>${match.input.substring(
+                    match.index + match[0].length,
+                    match.index + match[0].length + 30
+                  )}
+                </span>
+              </a>
+            `
+          )}
+        </nav>
+      </details>
+    `;
+  }
+}

@@ -19,6 +19,10 @@ module.exports = ({ NODE_ENV }) => {
       path: path.resolve(__dirname, "./dist"),
       publicPath: `/`,
       clean: true,
+      environment: {
+        module: true,
+        dynamicImport: true,
+      },
     },
 
     module: {

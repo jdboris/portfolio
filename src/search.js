@@ -1,5 +1,3 @@
-import html from "/html.js";
-
 export function search(query) {
   if (query.length < 3) return [];
 
@@ -19,16 +17,6 @@ export function search(query) {
   return matches;
 }
 
-export function revealMatch(match) {
-  const route = match.node.parentElement.closest("spa-route");
-  if (route && location.pathname != route.path) {
-    history.pushState(null, null, route.path);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  }
-
-  markToken(match.node, match[0], match.index);
-}
-
 // Source: https://stackoverflow.com/a/4183448
 export function selectMatch(match) {
   const sel = window.getSelection();
@@ -39,14 +27,6 @@ export function selectMatch(match) {
 
   sel.removeAllRanges();
   sel.addRange(range);
-}
-
-function markToken(node, token, index) {
-  node.replaceWith(
-    node.textContent.substring(0, index),
-    html(`<mark>${token}</mark>`),
-    node.textContent.substring(index + token.length)
-  );
 }
 
 function textNodesUnder(el) {
