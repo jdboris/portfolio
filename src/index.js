@@ -2,6 +2,7 @@ import "@jdboris/css-themes/vs-code";
 import { setRoot } from "spa-routing";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./style.scss";
+import { search } from "./search.js";
 
 setRoot(process.env.APP_PATH || "/");
 
@@ -10,6 +11,19 @@ const SPLIT_MODE_BREAKPOINT = 900;
 let width = null;
 
 const sideNav = document.querySelector("body > main > nav");
+
+// Close all other sidenav togglers when opening one
+sideNav.querySelectorAll(":scope > details").forEach((details) => {
+  details.addEventListener("toggle", () => {
+    if (details.open) {
+      sideNav.querySelectorAll(":scope > details").forEach((other) => {
+        if (other != details) {
+          other.open = false;
+        }
+      });
+    }
+  });
+});
 
 // Collapse sidenav if page is too small on load or on resize
 new ResizeObserver((entries) => {

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
 body {
-
   spa-route:not([active]) {
     display: none;
   }
@@ -102,5 +101,15 @@ body {
 
   .fa-message {
     color: #6074a1;
+  }
+
+  #search-results-section {
+    a > span {
+      margin-left: 1.1em;
+    }
+
+    a.active {
+      background: initial;
+    }
   }
 }

@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
-    "@jdboris/css-themes": "^2.6.1",
-    "spa-routing": "^1.2.1"
+    "@jdboris/css-themes": "^2.7.0",
+    "spa-routing": "^1.2.3"
   }
 }
