@@ -5,8 +5,9 @@
   "main": "dist/index.html",
   "scripts": {
     "start": "npx webpack serve --env NODE_ENV=development",
-    "build": "npx webpack --env NODE_ENV=production",
-    "link": "npm link ../spa-routing && npm link ../@jdboris/css-themes"
+    "build": "npx webpack --env NODE_ENV=production --stats-children",
+    "link": "npm link ../spa-routing && npm link ../@jdboris/css-themes",
+    "generate-favicons": "node ./scripts/generate-favicons.mjs"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "css-loader": "^6.7.4",
     "dotenv": "^16.0.3",
+    "favicons": "^7.1.3",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.1",
     "sass": "^1.62.1",
