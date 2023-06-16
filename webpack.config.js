@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+const fs = require("fs");
 
 module.exports = ({ NODE_ENV }) => {
   require("dotenv").config({
@@ -24,6 +25,7 @@ module.exports = ({ NODE_ENV }) => {
         module: true,
         dynamicImport: true,
       },
+      assetModuleFilename: "assets/[name].[hash][ext]",
     },
 
     module: {
@@ -47,14 +49,47 @@ module.exports = ({ NODE_ENV }) => {
           ],
         },
 
+        // Resolve/copy assets to the output
         ...(NODE_ENV == "production"
           ? [
               {
                 test: /\.html$/,
                 loader: "html-loader",
+                options: {
+                  preprocessor: (content, loaderContext) => {
+                    let result;
+
+                    try {
+                      result = content.replace(
+                        "{{favicon}}",
+                        fs.readFileSync("./src/favicon/tags.html")
+                      );
+                    } catch (error) {
+                      loaderContext.emitError(error);
+
+                      return content;
+                    }
+
+                    return result;
+                  },
+                },
               },
             ]
           : []),
+
+        {
+          test: /\.(json|png|jpg|gif|woff|woff2|eot|ttf|otf|mp4|ico|svg|webp)$/i,
+          type: "asset/resource",
+        },
+        {
+          test: /\.webmanifest$/i,
+          use: [
+            {
+              loader: path.resolve("./loaders/webmanifest-loader.js"),
+            },
+          ],
+          type: "asset/resource",
+        },
       ],
     },
     resolve: {
@@ -70,12 +105,32 @@ module.exports = ({ NODE_ENV }) => {
         publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
         filename: "index.html",
       }),
-      new HtmlWebpackPlugin({
-        template: "./src/index.html",
-        // NOTE: Remove the '/' from the end (if any)
-        publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
-        filename: "404.html",
-      }),
+      // new HtmlWebpackPlugin({
+      //   template: "./src/index.html",
+      //   // NOTE: Remove the '/' from the end (if any)
+      //   publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
+      //   filename: "404.html",
+      // }),
+      // new WebpackManifestPlugin({
+      //   fileName: "manifest.webmanifest",
+      //   // publicPath: "", // Specify the public path if necessary
+      //   // generate: (seed, files, entrypoints) => {
+      //   //   const manifestFiles = files.reduce((manifest, file) => {
+      //   //     // Modify the asset path as required
+      //   //     manifest[file.name] = file.path;
+      //   //     return manifest;
+      //   //   }, seed);
+
+      //   //   const entrypointFiles = entrypoints.main.filter(
+      //   //     (fileName) => !fileName.endsWith(".map")
+      //   //   );
+
+      //   //   return {
+      //   //     files: manifestFiles,
+      //   //     entrypoints: entrypointFiles,
+      //   //   };
+      //   // },
+      // }),
     ],
 
     devServer: {
