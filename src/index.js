@@ -106,6 +106,7 @@ window.addEventListener("popstate", () => {
   const form = document.querySelector("#search-form");
   const textbox = form.querySelector("[type='search']");
   textbox.addEventListener("input", (e) => form.requestSubmit());
+  textbox.addEventListener("change", (e) => form.requestSubmit());
 
   document.querySelector("#search-tab").addEventListener("toggle", (e) => {
     if (e.currentTarget.open) {
