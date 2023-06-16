@@ -111,5 +111,10 @@ body {
     a.active {
       background: initial;
     }
+
+    > span {
+      color: rgba(204, 204, 204, 0.65);
+      padding: 0 1.4rem;
+    }
   }
 }

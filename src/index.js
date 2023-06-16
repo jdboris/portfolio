@@ -121,6 +121,13 @@ window.addEventListener("popstate", () => {
         "#search-results-section"
       );
       const matches = search(textbox.value);
+
+      if (!matches.length) {
+        searchResultsSection.innerHTML = "<span>No results found.</span>";
+
+        return;
+      }
+
       const matchesByRoute = matches.reduce((total, match) => {
         const route = match.node.parentElement.closest(
           `spa-route:not([path="/"])`
