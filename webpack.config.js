@@ -105,32 +105,12 @@ module.exports = ({ NODE_ENV }) => {
         publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
         filename: "index.html",
       }),
-      // new HtmlWebpackPlugin({
-      //   template: "./src/index.html",
-      //   // NOTE: Remove the '/' from the end (if any)
-      //   publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
-      //   filename: "404.html",
-      // }),
-      // new WebpackManifestPlugin({
-      //   fileName: "manifest.webmanifest",
-      //   // publicPath: "", // Specify the public path if necessary
-      //   // generate: (seed, files, entrypoints) => {
-      //   //   const manifestFiles = files.reduce((manifest, file) => {
-      //   //     // Modify the asset path as required
-      //   //     manifest[file.name] = file.path;
-      //   //     return manifest;
-      //   //   }, seed);
-
-      //   //   const entrypointFiles = entrypoints.main.filter(
-      //   //     (fileName) => !fileName.endsWith(".map")
-      //   //   );
-
-      //   //   return {
-      //   //     files: manifestFiles,
-      //   //     entrypoints: entrypointFiles,
-      //   //   };
-      //   // },
-      // }),
+      new HtmlWebpackPlugin({
+        template: "./src/index.html",
+        // NOTE: Remove the '/' from the end (if any)
+        publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
+        filename: "404.html",
+      }),
     ],
 
     devServer: {
