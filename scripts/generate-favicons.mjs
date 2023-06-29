@@ -13,7 +13,7 @@ if (!destination) {
 
 const configuration = {
   path: destination.replace(/^\.\/src/, ""), // Path for overriding default icons path. `string`
-  appName: "Joe Boris | Full-Stack Web Developer", // Your application's name. `string`
+  appName: "Joe Boris | Full Stack Web Developer", // Your application's name. `string`
   appShortName: "Joe Boris", // Your application's short_name. `string`. Optional. If not set, appName will be used
   appDescription: "My personal web development portfolio.", // Your application's description. `string`
   developerName: "Joe Boris", // Your (or your developer's) name. `string`
