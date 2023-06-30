@@ -5,6 +5,8 @@ import "./style.scss";
 import debounce from "./debounce.js";
 import { search, selectMatch } from "./search.js";
 import html from "https://cdn.jsdelivr.net/gh/jdboris/htmljs@latest/html.js";
+import pdfjs from "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.7.107/+esm";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 setRoot(process.env.APP_PATH || "/");
 
@@ -186,3 +188,43 @@ window.addEventListener("popstate", () => {
     `;
   }
 }
+
+//
+// Asynchronous download PDF
+//
+const loadingTask = pdfjs.getDocument("/resume.pdf");
+(async () => {
+  const pdf = await loadingTask.promise;
+  //
+  // Fetch the first page
+  //
+  const page = await pdf.getPage(1);
+  const scale = 1.5;
+  const viewport = page.getViewport({ scale });
+  // Support HiDPI-screens.
+  const outputScale = window.devicePixelRatio || 1;
+
+  //
+  // Prepare canvas using PDF page dimensions
+  //
+  const canvas = document.querySelector("[path='/resume'] canvas");
+  const context = canvas.getContext("2d");
+
+  canvas.width = Math.floor(viewport.width * outputScale);
+  canvas.height = Math.floor(viewport.height * outputScale);
+  canvas.style.width = Math.floor(viewport.width) + "px";
+  canvas.style.height = Math.floor(viewport.height) + "px";
+
+  const transform =
+    outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null;
+
+  //
+  // Render PDF page into canvas context
+  //
+  const renderContext = {
+    canvasContext: context,
+    transform,
+    viewport,
+  };
+  page.render(renderContext);
+})();
