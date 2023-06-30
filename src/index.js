@@ -192,7 +192,9 @@ window.addEventListener("popstate", () => {
 //
 // Asynchronous download PDF
 //
-const loadingTask = pdfjs.getDocument("/resume.pdf");
+const loadingTask = pdfjs.getDocument(
+  "https://jdboris.github.io/resume/resume.pdf"
+);
 (async () => {
   const pdf = await loadingTask.promise;
   //
