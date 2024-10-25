@@ -18,7 +18,7 @@ module.exports = ({ NODE_ENV }) => {
     output: {
       filename: `[name].[contenthash].js`,
       path: path.resolve(__dirname, "./dist"),
-      publicPath: `/`,
+      publicPath: `${process.env.APP_PATH.replace(/\/$/, "")}/`,
       clean: true,
       // Allow external imports
       environment: {
