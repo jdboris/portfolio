@@ -6,7 +6,7 @@ body {
   }
 
   // WELCOME PAGE
-  spa-route[path="/"] {
+  spa-route[path$="/"] {
     > main {
       font-family: "Finlandica", sans-serif;
       font-weight: bold;
@@ -32,7 +32,7 @@ body {
     }
   }
 
-  spa-route[path="/work"] {
+  spa-route[path$="/work"] {
     .projects {
       > a {
         display: inline-flex;
@@ -73,7 +73,7 @@ body {
     }
   }
 
-  spa-route[path="/resume"] {
+  spa-route[path$="/resume"] {
     > main {
       @media screen and (max-width: 480px) {
         padding: 0;
@@ -87,7 +87,7 @@ body {
     }
   }
 
-  spa-route[path="/contact"] {
+  spa-route[path$="/contact"] {
     address {
       display: flex;
       flex-direction: column;

@@ -59,7 +59,7 @@ new ResizeObserver((entries) => {
     ) {
       if (document.querySelector("spa-route[path^='/work'][active]")) {
         document
-          .querySelectorAll("spa-route[path='/work']")
+          .querySelectorAll(`spa-route[path="${process.env.APP_PATH}/work"]`)
           .forEach((x) => (x.active = true));
       }
     }
@@ -95,9 +95,9 @@ window.addEventListener("popstate", () => {
   });
 
   if (width > SPLIT_MODE_BREAKPOINT) {
-    if (location.pathname.startsWith("/work")) {
+    if (location.pathname.startsWith(`${process.env.APP_PATH}/work`)) {
       document
-        .querySelectorAll("spa-route[path='/work']")
+        .querySelectorAll(`spa-route[path="${process.env.APP_PATH}/work"]`)
         .forEach((x) => (x.active = true));
     }
   }
@@ -133,7 +133,7 @@ window.addEventListener("popstate", () => {
 
       const matchesByRoute = matches.reduce((total, match) => {
         const route = match.node.parentElement.closest(
-          `spa-route:not([path="/"])`
+          `spa-route:not([path="${process.env.APP_PATH}"])`
         );
         // Ignore search results that aren't in a route.
         if (!route) return total;
@@ -209,7 +209,9 @@ const loadingTask = pdfjs.getDocument(
   //
   // Prepare canvas using PDF page dimensions
   //
-  const canvas = document.querySelector("[path='/resume'] canvas");
+  const canvas = document.querySelector(
+    `[path="${process.env.APP_PATH}/resume"] canvas`
+  );
   const context = canvas.getContext("2d");
 
   canvas.width = Math.floor(viewport.width * outputScale);
