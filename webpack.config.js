@@ -25,8 +25,7 @@ module.exports = ({ NODE_ENV }) => {
         module: true,
         dynamicImport: true,
       },
-      assetModuleFilename:
-        process.env.APP_PATH.replace(/\/$/, "") + "/assets/[name].[hash][ext]",
+      assetModuleFilename: "assets/[name].[hash][ext]",
     },
 
     module: {

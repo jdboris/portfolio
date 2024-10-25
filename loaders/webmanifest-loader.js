@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+require("dotenv").config();
 
 module.exports = async function (source) {
   const loaderContext = this;
@@ -15,12 +16,12 @@ module.exports = async function (source) {
           )
         );
 
-        const outputPath = `/assets/${
-          path.parse(inputPath).name
-        }.${require("crypto")
-          .createHash("md5")
-          .update(fs.readFileSync(inputPath))
-          .digest("hex")}${path.parse(inputPath).ext}`;
+        const outputPath =
+          process.env.APP_PATH.replace(/\/$/, "") +
+          `/assets/${path.parse(inputPath).name}.${require("crypto")
+            .createHash("md5")
+            .update(fs.readFileSync(inputPath))
+            .digest("hex")}${path.parse(inputPath).ext}`;
 
         loaderContext.emitFile(outputPath, fs.readFileSync(inputPath));
 
